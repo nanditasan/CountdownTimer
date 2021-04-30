@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">CountDownTimer</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Welcome!</string>
+    <string name="hello_second_fragment">CountDown</string>
+    <string name="hour_input_text">hh</string>
+    <string name="min_input_text">mm</string>
+    <string name="seconds_input_text">ss</string>
+    <string name="button_stop_text">Stop</string>
+</resources>
