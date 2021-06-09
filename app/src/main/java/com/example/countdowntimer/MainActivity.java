@@ -2,6 +2,9 @@ package com.example.countdowntimer;
 
 import android.os.Bundle;
 
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -12,8 +15,11 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +27,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        textView = (TextView)findViewById(R.id.textview_first);
+        if(!Python.isStarted()){
+            Python.start(new AndroidPlatform(this));
+        }// this will start python
+
+        //creating python instance
+        Python py = Python.getInstance();
+        //creating python object
+        PyObject pyobj = py.getModule("myscript");
+
+        //calling the function
+        PyObject obj = pyobj.callAttr("main");
+
+        textView.setText(obj.toString());
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
